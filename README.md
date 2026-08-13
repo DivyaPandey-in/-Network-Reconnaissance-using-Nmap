@@ -1,6 +1,7 @@
 # 🔎 Network Reconnaissance using Nmap
 
 ## 📌 Project Overview
+
 This project demonstrates network reconnaissance and service enumeration using Kali Linux and Nmap against an intentionally vulnerable Metasploitable 2 virtual machine.
 
 The project was performed in a controlled VirtualBox lab environment.
@@ -23,7 +24,7 @@ The main objective was to identify the target, verify connectivity, discover ope
 
 ---
 
-#Step 1: Check Kali Linux IP Address
+# 🔹 Step 1: Check Kali Linux IP Address
 
 First, the IP configuration of the Kali Linux machine was checked.
 
@@ -48,13 +49,14 @@ The target Metasploitable 2 machine was:
 Both machines were on the same 192.168.56.0/24 network.
 
 ### Screenshot
-![IP Address Testing](ipconfiguration_kali.jpeg)
+![ip addr kali](ipconfiguration_kali.jpeg)
+![ip addr meta](ipconfiguration_metasplotable2.jpeg)
 
-![IP Addresss Testing](ipconfiguration_metasplotable2.jpeg)
 
 ---
 
-#Step 2: Test Connectivity using Ping
+# 🔹 Step 2: Test Connectivity using Ping
+
 Connectivity between Kali Linux and Metasploitable was tested using ICMP Ping.
 
 ### Command
@@ -73,6 +75,7 @@ ping -c 4 192.168.56.102
 0% packet loss
 
 ### Analysis
+
 The result confirmed that:
 
 - The target host was reachable.
@@ -81,6 +84,7 @@ The result confirmed that:
 - Kali Linux could communicate with the target.
 
 ### What is Ping?
+
 Ping is a network diagnostic utility used to check whether a host is reachable.
 
 Ping uses ICMP Echo Request and ICMP Echo Reply messages.
@@ -96,11 +100,13 @@ Metasploitable
 Kali Linux
 
 ### What is ICMP?
+
 ICMP stands for Internet Control Message Protocol.
 
 It is used for network diagnostics, error reporting and control messages.
 
 ### What is TTL?
+
 The response contained:
 
 ttl=64
@@ -119,14 +125,18 @@ Router 3 → 61
 In this local lab, the target returned TTL 64.
 
 TTL can provide clues about the originating operating system/network stack, but TTL alone should not be considered definitive OS identification.
+---
 
-# Step 3: Verify Local Connectivity using ARP
+# 🔹 Step 3: Verify Local Connectivity using ARP
+
 ARP was used to verify Layer-2 connectivity with the target.
 
 ### Command
+
 sudo arping -I eth0 192.168.56.102
 
 ### Result
+
 The target responded with the MAC address:
 
 08:00:27:22:3A:D9
@@ -138,6 +148,7 @@ Final result:
 0% unanswered
 
 ### Analysis
+
 This confirmed that Kali Linux could resolve the target IP address to its MAC address.
 
 IP Address
@@ -149,16 +160,24 @@ MAC Address
 08:00:27:22:3A:D9
 
 ARP stands for Address Resolution Protocol.
-
 It is used on an IPv4 local network to find the MAC address associated with an IP address.
+
+### Screenshot
+
+![Connectivity_testing](connnectivity_testing.jpeg)
+
 ---
+
 # 🔹 Step 4: Perform Basic Nmap Port Scan
+
 After confirming connectivity, a basic Nmap scan was performed.
 
 ### Command
+
 nmap 192.168.56.102
 
 ### Result
+
 Nmap identified the following open TCP ports:
 
 21/tcp   open  ftp
@@ -208,19 +227,22 @@ An open port means that a service is listening and accepting network connections
 An open port does not automatically mean that the service is vulnerable. Further investigation is required.
 
 ### Screenshot
-![nmap port scanning](nmap_port_scan.jpeg)
 
+![nmap_scan](nmap_port_scan.jpeg)
 ---
 
-#Step 5: Service and Version Enumeration
+# 🔹 Step 5: Service and Version Enumeration
+
 After identifying open ports, service and version detection was performed.
 
 ### Command
+
 nmap -sV 192.168.56.102
 
 The -sV option attempts to identify the service and version running on open ports.
 
 ### Result
+
 21/tcp   open  ftp         vsftpd 2.3.4
 22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1
 23/tcp   open  telnet      Linux telnetd
@@ -246,6 +268,7 @@ The -sV option attempts to identify the service and version running on open port
 8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
 
 ### Additional Information
+
 Target MAC Address:
 
 08:00:27:22:3A:D9
@@ -259,6 +282,7 @@ Operating system information:
 Unix / Linux
 
 ### Analysis
+
 Service enumeration provides more information than a basic port scan.
 
 For example:
@@ -276,10 +300,12 @@ we have additional information about the software running on that port.
 This information can help security teams identify outdated software and prioritize security assessment and patching.
 
 ### Screenshot
-![Service and Version Enumeration](nmap_port_services_scan.jpeg)
 
+![nmap enumeration](nmap_port_services_scan.jpeg)
 ---
-# Attack Surface Analysis
+
+# 🔹 Attack Surface Analysis
+
 The scan identified several categories of exposed services.
 
 ## Remote Access Services
@@ -291,6 +317,7 @@ The scan identified several categories of exposed services.
 These services provide remote access capabilities and should be properly secured and monitored.
 
 ## Web Services
+
 80   → HTTP
 8009 → AJP13
 8180 → Apache Tomcat
@@ -298,6 +325,7 @@ These services provide remote access capabilities and should be properly secured
 Web-facing services should be patched, securely configured and monitored.
 
 ## File Sharing Services
+
 21   → FTP
 139  → SMB
 445  → SMB
@@ -307,6 +335,7 @@ Web-facing services should be patched, securely configured and monitored.
 File-sharing services should be restricted to authorized users and systems.
 
 ## Database Services
+
 3306 → MySQL
 5432 → PostgreSQL
 
@@ -314,7 +343,8 @@ Database services should not be unnecessarily exposed to untrusted networks.
 
 ---
 
-#Security Findings
+# 🔹 Security Findings
+
 The reconnaissance exercise identified:
 
 - Multiple open TCP ports
@@ -330,7 +360,8 @@ The target is Metasploitable 2, which is intentionally vulnerable and designed f
 
 ---
 
-# SOC Analyst Relevance
+# 🔹 SOC Analyst Relevance
+
 Network reconnaissance is important from a SOC Analyst perspective.
 
 An attacker may perform scanning before attempting exploitation.
@@ -357,7 +388,8 @@ For example, if one source IP rapidly attempts connections to many ports on the 
 
 ---
 
-#  Project Workflow
+# 🔹 Project Workflow
+
 Check IP Configuration
         ↓
 Identify Target
@@ -378,7 +410,8 @@ SOC Analysis
 
 ---
 
-#  Conclusion
+# 🔹 Conclusion
+
 This project demonstrated a complete network reconnaissance and service enumeration workflow using Kali Linux and Nmap against an intentionally vulnerable Metasploitable 2 virtual machine.
 
 The project covered:
@@ -398,5 +431,3 @@ The project covered:
 The practical exercise provided hands-on experience in identifying exposed network services and understanding how reconnaissance activity can be relevant to SOC monitoring and investigation.
 
 ---
-
-
