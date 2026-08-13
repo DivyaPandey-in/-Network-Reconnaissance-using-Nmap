@@ -25,7 +25,6 @@ The main objective was to identify the target, verify connectivity, discover ope
 ---
 
 # 🔹 Step 1: Check Kali Linux IP Address
-
 First, the IP configuration of the Kali Linux machine was checked.
 
 ### Command
