@@ -25,6 +25,7 @@ The main objective was to identify the target, verify connectivity, discover ope
 ---
 
 # 🔹 Step 1: Check Kali Linux IP Address
+
 First, the IP configuration of the Kali Linux machine was checked.
 
 ### Command
@@ -121,9 +122,7 @@ Router 1 → 63
 Router 2 → 62
 Router 3 → 61
 
-In this local lab, the target returned TTL 64.
-
-TTL can provide clues about the originating operating system/network stack, but TTL alone should not be considered definitive OS identification.
+In this local lab, the target returned TTL 64
 ---
 
 # 🔹 Step 3: Verify Local Connectivity using ARP
@@ -163,7 +162,7 @@ It is used on an IPv4 local network to find the MAC address associated with an I
 
 ### Screenshot
 
-![Connectivity_testing](connnectivity_testing.jpeg)
+![Connectivity_testings](connnectivity_testing.jpeg)
 
 ---
 
