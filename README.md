@@ -1,13 +1,14 @@
 # 🔎 **Network Reconnaissance** using Nmap
 
 ## 📌 Project Overview
+
 This project demonstrates network reconnaissance and service enumeration using Kali Linux and Nmap against an intentionally vulnerable Metasploitable 2 virtual machine.
 
 The project was performed in a controlled VirtualBox lab environment.
 
 The main objective was to identify the target, verify connectivity, discover open ports, identify running services and analyze the exposed attack surface.
 
----
+
 
 ## 🧪 Lab Environment
 | Component | Details |
