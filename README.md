@@ -54,6 +54,9 @@ Connectivity between Kali Linux and Metasploitable was tested using ICMP Ping.
 
 ping -c 4 192.168.56.102
 
+### screenshot
+![Connectivity_testings](connectivity_testing.jpeg)
+
 ### Result
 
 - 64 bytes from 192.168.56.102: icmp_seq=1 ttl=64
@@ -139,10 +142,6 @@ MAC Address
 
 - ARP stands for Address Resolution Protocol.
 - It is used on an IPv4 local network to find the MAC address associated with an IP address.
-
-### Screenshot
-
-![Connectivity_testings](connectivity_testing.jpeg)
 
 ---
 
