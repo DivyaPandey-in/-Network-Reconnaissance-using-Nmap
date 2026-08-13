@@ -156,8 +156,6 @@ nmap 192.168.56.102
 
 ### Result
 
-### Result
-
 Nmap identified the following open TCP ports:
 
 | Port | State | Service |
@@ -224,8 +222,6 @@ The -sV option attempts to identify the service and version running on open port
 
 ### Result
 
-### Result
-
 | Port | State | Service | Version |
 |---|---|---|---|
 | 21/tcp | Open | FTP | vsftpd 2.3.4 |
@@ -254,35 +250,19 @@ The -sV option attempts to identify the service and version running on open port
 
 ### Additional Information
 
-Target MAC Address:
-
-08:00:27:22:3A:D9
-
-Nmap identified the target as:
-
-metasploitable.localdomain
-
-Operating system information:
-
-Unix / Linux
+- Target MAC Address: 08:00:27:22:3A:D9
+- Nmap identified the target as: metasploitable.localdomain
+- Operating system information: Unix / Linux
 
 ### Analysis
 
-Service enumeration provides more information than a basic port scan.
-
-For example:
-
-22/tcp open ssh
-
-only tells us that SSH is available.
-
-After version detection:
-
-22/tcp open ssh OpenSSH 4.7p1
-
-we have additional information about the software running on that port.
-
-This information can help security teams identify outdated software and prioritize security assessment and patching.
+- Service enumeration provides more information than a basic port scan.
+- For example: 22/tcp open ssh
+- only tells us that SSH is available.
+- After version detection:
+- 22/tcp open ssh OpenSSH 4.7p1
+- we have additional information about the software running on that port.
+- This information can help security teams identify outdated software and prioritize security assessment and patching.
 
 ### Screenshot
 
@@ -347,9 +327,8 @@ The target is Metasploitable 2, which is intentionally vulnerable and designed f
 
 # 🔹 SOC Analyst Relevance
 
-Network reconnaissance is important from a SOC Analyst perspective.
-
-An attacker may perform scanning before attempting exploitation.
+- Network reconnaissance is important from a SOC Analyst perspective.
+- An attacker may perform scanning before attempting exploitation.
 
 A SOC Analyst may detect:
 
@@ -375,23 +354,32 @@ For example, if one source IP rapidly attempts connections to many ports on the 
 
 # 🔹 Project Workflow
 
-Check IP Configuration
-        ↓
-Identify Target
-        ↓
-Ping Connectivity Test
-        ↓
-ARP Verification
-        ↓
-Nmap Port Scan
-        ↓
-Service & Version Detection
-        ↓
-Attack Surface Analysis
-        ↓
-Security Findings
-        ↓
-SOC Analysis
+1. **IP Configuration**  
+   Check the IP address and network interface of the Kali Linux machine.
+
+2. **Target Identification**  
+   Identify the Metasploitable 2 target IP address.
+
+3. **Connectivity Testing**  
+   Use ICMP Ping to verify communication between Kali Linux and the target.
+
+4. **ARP Verification**  
+   Use ARP to verify the target's MAC address on the local network.
+
+5. **Port Scanning**  
+   Use Nmap to identify open TCP ports.
+
+6. **Service Enumeration**  
+   Use Nmap `-sV` to identify running services and their versions.
+
+7. **Attack Surface Analysis**  
+   Categorize the exposed services and potential entry points.
+
+8. **Security Findings**  
+   Document the discovered services, legacy software, and exposed attack surface.
+
+9. **SOC Analyst Relevance**  
+   Understand how reconnaissance and port-scanning activity can be detected and investigated by a SOC Analyst.
 
 ---
 
