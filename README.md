@@ -50,7 +50,7 @@ Both machines were on the same 192.168.56.0/24 network.
 
 ### Screenshot
 ![IP Address Testing](ipconfiguration_kali.jpeg)
-![IP Address Testing](ipconfiguration_metasploitable2.jpeg)
+![IP Address Testing](ipconfiguration_metasplotable2.jpeg)
 
 ---
 
