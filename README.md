@@ -1,7 +1,6 @@
 # 🔎 Network Reconnaissance using Nmap
 
 ## 📌 Project Overview
-
 This project demonstrates network reconnaissance and service enumeration using Kali Linux and Nmap against an intentionally vulnerable Metasploitable 2 virtual machine.
 
 The project was performed in a controlled VirtualBox lab environment.
@@ -50,8 +49,8 @@ The target Metasploitable 2 machine was:
 Both machines were on the same 192.168.56.0/24 network.
 
 ### Screenshot
-
-01-ip-configuration.png
+![IP Address Testing](ipconfiguration_kali.jpeg)
+![IP Address Testing](ipconfiguration_metasploitable2.jpeg)
 
 ---
 
@@ -126,12 +125,6 @@ In this local lab, the target returned TTL 64.
 
 TTL can provide clues about the originating operating system/network stack, but TTL alone should not be considered definitive OS identification.
 
-### Screenshot
-
-02-connectivity-test.png
-
----
-
 # 🔹 Step 3: Verify Local Connectivity using ARP
 
 ARP was used to verify Layer-2 connectivity with the target.
@@ -167,13 +160,7 @@ MAC Address
 ARP stands for Address Resolution Protocol.
 
 It is used on an IPv4 local network to find the MAC address associated with an IP address.
-
-### Screenshot
-
-03-arp-verification.png
-
 ---
-
 # 🔹 Step 4: Perform Basic Nmap Port Scan
 
 After confirming connectivity, a basic Nmap scan was performed.
@@ -234,7 +221,7 @@ An open port does not automatically mean that the service is vulnerable. Further
 
 ### Screenshot
 
-04-nmap-port-scan.png
+![nmap port scanning](nmap_port_scan.jpeg)
 
 ---
 
@@ -308,10 +295,9 @@ This information can help security teams identify outdated software and prioriti
 
 ### Screenshot
 
-05-service-version-scan.png
+![Service and Version Enumeration](nmap_port_services_scan.jpeg)
 
 ---
-
 # 🔹 Attack Surface Analysis
 
 The scan identified several categories of exposed services.
@@ -440,8 +426,4 @@ The practical exercise provided hands-on experience in identifying exposed netwo
 
 ---
 
-# ⚠️ Disclaimer
 
-This project was performed only against an intentionally vulnerable Metasploitable 2 virtual machine in a controlled and authorized laboratory environment.
-
-Do not scan, enumerate, or test systems without explicit authorization.
