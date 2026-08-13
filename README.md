@@ -162,7 +162,7 @@ It is used on an IPv4 local network to find the MAC address associated with an I
 
 ### Screenshot
 
-![Connectivity_testings](connnectivity_testing.jpeg)
+![Connectivity_testings](connectivity_testing.jpeg)
 
 ---
 
