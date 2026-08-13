@@ -34,19 +34,10 @@ ip addr
 
 ### Result
 
-Kali Linux was assigned:
-
-192.168.56.101/24
-
-The active interface was:
-
-eth0
-
-The target Metasploitable 2 machine was:
-
-192.168.56.102
-
-Both machines were on the same 192.168.56.0/24 network.
+- Kali Linux was assigned:192.168.56.101/24
+- The active interface was:eth0
+- The target Metasploitable 2 machine was:192.168.56.102
+- Both machines were on the same 192.168.56.0/24 network.
 
 ### Screenshot
 ![ip addr kali](ipconfiguration_kali.jpeg)
@@ -65,10 +56,10 @@ ping -c 4 192.168.56.102
 
 ### Result
 
-64 bytes from 192.168.56.102: icmp_seq=1 ttl=64
-64 bytes from 192.168.56.102: icmp_seq=2 ttl=64
-64 bytes from 192.168.56.102: icmp_seq=3 ttl=64
-64 bytes from 192.168.56.102: icmp_seq=4 ttl=64
+- 64 bytes from 192.168.56.102: icmp_seq=1 ttl=64
+- 64 bytes from 192.168.56.102: icmp_seq=2 ttl=64
+- 64 bytes from 192.168.56.102: icmp_seq=3 ttl=64
+- 64 bytes from 192.168.56.102: icmp_seq=4 ttl=64
 
 4 packets transmitted
 4 received
@@ -77,7 +68,6 @@ ping -c 4 192.168.56.102
 ### Analysis
 
 The result confirmed that:
-
 - The target host was reachable.
 - ICMP communication was working.
 - No packet loss was observed.
@@ -101,23 +91,16 @@ Kali Linux
 
 ### What is ICMP?
 
-ICMP stands for Internet Control Message Protocol.
-
-It is used for network diagnostics, error reporting and control messages.
+- ICMP stands for Internet Control Message Protocol.
+- It is used for network diagnostics, error reporting and control messages.
 
 ### What is TTL?
 
 The response contained:
-
-ttl=64
-
-TTL stands for Time To Live.
-
-TTL limits the number of network hops an IP packet can make before it is discarded.
-
-For example:
-
-Initial TTL = 64
+- ttl=64
+- TTL limits the number of network hops an IP packet can make before it is discarded.
+- For example:
+- Initial TTL = 64
 Router 1 → 63
 Router 2 → 62
 Router 3 → 61
@@ -135,11 +118,9 @@ sudo arping -I eth0 192.168.56.102
 
 ### Result
 
-The target responded with the MAC address:
+- The target responded with the MAC address: 08:00:27:22:3A:D9
 
-08:00:27:22:3A:D9
-
-Final result:
+- Final result:
 
 40 packets transmitted
 40 packets received
@@ -147,18 +128,17 @@ Final result:
 
 ### Analysis
 
-This confirmed that Kali Linux could resolve the target IP address to its MAC address.
+- This confirmed that Kali Linux could resolve the target IP address to its MAC address.
 
-IP Address
-192.168.56.102
+- IP Address: 192.168.56.102
       ↓
      ARP
       ↓
 MAC Address
 08:00:27:22:3A:D9
 
-ARP stands for Address Resolution Protocol.
-It is used on an IPv4 local network to find the MAC address associated with an IP address.
+- ARP stands for Address Resolution Protocol.
+- It is used on an IPv4 local network to find the MAC address associated with an IP address.
 
 ### Screenshot
 
@@ -176,53 +156,56 @@ nmap 192.168.56.102
 
 ### Result
 
+### Result
+
 Nmap identified the following open TCP ports:
 
-21/tcp   open  ftp
-22/tcp   open  ssh
-23/tcp   open  telnet
-25/tcp   open  smtp
-53/tcp   open  domain
-80/tcp   open  http
-111/tcp  open  rpcbind
-139/tcp  open  netbios-ssn
-445/tcp  open  microsoft-ds
-512/tcp  open  exec
-513/tcp  open  login
-514/tcp  open  shell
-1099/tcp open  rmiregistry
-1524/tcp open  ingreslock
-2049/tcp open  nfs
-2121/tcp open  ccproxy-ftp
-3306/tcp open  mysql
-5432/tcp open  postgresql
-5900/tcp open  vnc
-6000/tcp open  X11
-6667/tcp open  irc
-8009/tcp open  ajp13
-8180/tcp open  unknown
+| Port | State | Service |
+|---|---|---|
+| 21/tcp | Open | FTP |
+| 22/tcp | Open | SSH |
+| 23/tcp | Open | Telnet |
+| 25/tcp | Open | SMTP |
+| 53/tcp | Open | DNS |
+| 80/tcp | Open | HTTP |
+| 111/tcp | Open | RPCBind |
+| 139/tcp | Open | NetBIOS-SSN / SMB |
+| 445/tcp | Open | Microsoft-DS / SMB |
+| 512/tcp | Open | Exec |
+| 513/tcp | Open | Login |
+| 514/tcp | Open | Shell |
+| 1099/tcp | Open | RMI Registry |
+| 1524/tcp | Open | IngresLock |
+| 2049/tcp | Open | NFS |
+| 2121/tcp | Open | FTP |
+| 3306/tcp | Open | MySQL |
+| 5432/tcp | Open | PostgreSQL |
+| 5900/tcp | Open | VNC |
+| 6000/tcp | Open | X11 |
+| 6667/tcp | Open | IRC |
+| 8009/tcp | Open | AJP13 |
+| 8180/tcp | Open | HTTP |
 
-Nmap also reported:
-
-977 closed TCP ports
+- Nmap also reported **977 closed TCP ports**.
+-Nmap also reported:
+- 977 closed TCP ports
 
 ### Analysis
 
 Examples of discovered services:
 
-21   → FTP
-22   → SSH
-23   → Telnet
-80   → HTTP
-139  → SMB
-445  → SMB
-3306 → MySQL
-5432 → PostgreSQL
-5900 → VNC
+- 21   → FTP
+- 22   → SSH
+- 23   → Telnet
+- 80   → HTTP
+- 139  → SMB
+- 445  → SMB
+- 3306 → MySQL
+- 5432 → PostgreSQL
+- 5900 → VNC
 
-An open port means that a service is listening and accepting network connections on that port.
-
-An open port does not automatically mean that the service is vulnerable. Further investigation is required.
+- An open port means that a service is listening and accepting network connections on that port.
+- An open port does not automatically mean that the service is vulnerable. Further investigation is required.
 
 ### Screenshot
 
@@ -241,29 +224,33 @@ The -sV option attempts to identify the service and version running on open port
 
 ### Result
 
-21/tcp   open  ftp         vsftpd 2.3.4
-22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1
-23/tcp   open  telnet      Linux telnetd
-25/tcp   open  smtp        Postfix smtpd
-53/tcp   open  domain      ISC BIND 9.4.2
-80/tcp   open  http        Apache httpd 2.2.8
-111/tcp  open  rpcbind     2
-139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X
-445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X
-512/tcp  open  exec        netkit-rsh rexecd
-513/tcp  open  login       OpenBSD or Solaris rlogind
-514/tcp  open  shell       Netkit rshd
-1099/tcp open  java-rmi    GNU Classpath grmiregistry
-1524/tcp open  bindshell   Metasploitable root shell
-2049/tcp open  nfs         2-4
-2121/tcp open  ftp         ProFTPD 1.3.1
-3306/tcp open  mysql       MySQL 5.0.51a-3ubuntu5
-5432/tcp open  postgresql  PostgreSQL 8.3.0 - 8.3.7
-5900/tcp open  vnc         VNC protocol 3.3
-6000/tcp open  X11         access denied
-6667/tcp open  irc         UnrealIRCd
-8009/tcp open  ajp13       Apache Jserv Protocol v1.3
-8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
+### Result
+
+| Port | State | Service | Version |
+|---|---|---|---|
+| 21/tcp | Open | FTP | vsftpd 2.3.4 |
+| 22/tcp | Open | SSH | OpenSSH 4.7p1 |
+| 23/tcp | Open | Telnet | Linux telnetd |
+| 25/tcp | Open | SMTP | Postfix smtpd |
+| 53/tcp | Open | DNS | ISC BIND 9.4.2 |
+| 80/tcp | Open | HTTP | Apache httpd 2.2.8 |
+| 111/tcp | Open | RPCBind | 2 |
+| 139/tcp | Open | NetBIOS-SSN | Samba smbd 3.X–4.X |
+| 445/tcp | Open | SMB | Samba smbd 3.X–4.X |
+| 512/tcp | Open | Exec | netkit-rsh rexecd |
+| 513/tcp | Open | Login | rlogind |
+| 514/tcp | Open | Shell | Netkit rshd |
+| 1099/tcp | Open | Java RMI | GNU Classpath grmiregistry |
+| 1524/tcp | Open | Bind Shell | Metasploitable root shell |
+| 2049/tcp | Open | NFS | Version 2–4 |
+| 2121/tcp | Open | FTP | ProFTPD 1.3.1 |
+| 3306/tcp | Open | MySQL | MySQL 5.0.51a-3ubuntu5 |
+| 5432/tcp | Open | PostgreSQL | PostgreSQL 8.3.0–8.3.7 |
+| 5900/tcp | Open | VNC | VNC Protocol 3.3 |
+| 6000/tcp | Open | X11 | Access denied |
+| 6667/tcp | Open | IRC | UnrealIRCd |
+| 8009/tcp | Open | AJP13 | Apache Jserv Protocol v1.3 |
+| 8180/tcp | Open | HTTP | Apache Tomcat/Coyote JSP 1.1 |
 
 ### Additional Information
 
