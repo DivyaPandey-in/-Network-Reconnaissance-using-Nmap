@@ -72,12 +72,6 @@ The result confirmed that:
 - No packet loss was observed.
 - Kali Linux could communicate with the target.
 
-### What is Ping?
-
-Ping is a network diagnostic utility used to check whether a host is reachable.
-
-Ping uses ICMP Echo Request and ICMP Echo Reply messages.
-
 Kali Linux
     |
     | ICMP Echo Request
@@ -87,22 +81,6 @@ Metasploitable
     | ICMP Echo Reply
     ↓
 Kali Linux
-
-### What is ICMP?
-
-- ICMP stands for Internet Control Message Protocol.
-- It is used for network diagnostics, error reporting and control messages.
-
-### What is TTL?
-
-The response contained:
-- ttl=64
-- TTL limits the number of network hops an IP packet can make before it is discarded.
-- For example:
-- Initial TTL = 64
-Router 1 → 63
-Router 2 → 62
-Router 3 → 61
 
 In this local lab, the target returned TTL 64
 ---
